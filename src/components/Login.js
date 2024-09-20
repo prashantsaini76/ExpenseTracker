@@ -62,7 +62,7 @@ const Login = () => {
   //console.log("Rendering Login component. isOpen:", isOpen);
 
   return (
-    <div className="min-h-screen bg-gray-100 flex justify-center items-center">
+    <div className="sm:min-h-screen sm:bg-gray-100 flex justify-center items-center mt-10 sm:mt-0">
       <div className="flex flex-col flex-shrink gap-4 mx-auto w-[300px] sm:w-[500px] shadow-lg items-center justify-center bg-white rounded-lg px-8 py-[50px]">
       <h2 className="text-2xl font-bold text-gray-800 mb-6">Login</h2>
         <form onSubmit={handleLogin} className="w-full">

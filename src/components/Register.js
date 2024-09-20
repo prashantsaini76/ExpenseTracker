@@ -64,7 +64,7 @@ const Register = () => {
       {isLoading ? (
         <Spinner />
       ) : (
-        <div className="min-h-screen bg-gray-100 flex justify-center items-center">
+        <div className="sm:min-h-screen sm:bg-gray-100 flex justify-center items-center mt-10 sm:mt-0">
           <div className="bg-white p-8 rounded-lg shadow-lg w-[300px] sm:w-[500px]">
             <h2 className="text-2xl font-bold text-gray-800 mb-6">
               {successMessage ? "Success" : "Create Account"}
