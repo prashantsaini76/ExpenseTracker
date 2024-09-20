@@ -2,6 +2,7 @@ import React, { useCallback, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Spinner from "./Spinner";
+import Apiconfig from '../config/Apiconfig'
 
 const AddExpensePage = () => {
   const [date, setDate] = useState("");
@@ -39,7 +40,7 @@ const AddExpensePage = () => {
       };
 
       // Send POST request to add expense
-      await axios.post("http://localhost:3500/expenses", newExpense, {
+      await axios.post(`${Apiconfig.BASE_URL}/expenses`, newExpense, {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
