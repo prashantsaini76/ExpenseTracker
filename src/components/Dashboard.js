@@ -216,7 +216,7 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen bg-gray-100">
       <div className="container mx-auto py-8 px-4">
-        <div className="flex justify-between items-center mb-6">
+        <div className="flex justify-start gap-4 items-center mb-6">
           <h2 className="text-xl sm:text-3xl font-bold text-gray-800">
             Dashboard
           </h2>
@@ -271,8 +271,8 @@ const Dashboard = () => {
           </h3>
         </div>
 
-        <div className="bg-white shadow-md rounded-lg overflow-auto">
-          <table className=" w-[50%] sm:min-w-full leading-normal">
+        <div className="bg-white shadow-md rounded-lg overflow-y-auto overflow-x-auto">
+          <table className="min-w-full leading-normal">
             <thead>
               <tr>
                 <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-lg uppercase font-semibold">
@@ -282,10 +282,10 @@ const Dashboard = () => {
                   Debit Item
                 </th>
                 <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-lg uppercase font-semibold">
-                  Mode of Transfer
+                  Mode
                 </th>
                 <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-lg uppercase font-semibold">
-                  Debit Bank Account
+                  Debit From
                 </th>
                 <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-lg uppercase font-semibold">
                   Amount (₹)
