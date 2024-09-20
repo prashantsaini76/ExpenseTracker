@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Apiconfig from '../config/Apiconfig';
 
 const Dashboard = () => {
   const [expenses, setExpenses] = useState([]);
@@ -31,7 +32,7 @@ const Dashboard = () => {
       }
 
       try {
-        const response = await axios.get('http://localhost:3500/expenses', {
+        const response = await axios.get(`${Apiconfig.BASE_URL}/expenses`, {
           headers: {
             Authorization: `Bearer ${authToken}`,
           },
@@ -90,7 +91,7 @@ const Dashboard = () => {
     const authToken = localStorage.getItem('authToken');
     setLoading(true);
     try {
-      await axios.delete('http://localhost:3500/expenses', {
+      await axios.delete(`${Apiconfig.BASE_URL}/expenses`, {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
@@ -112,6 +113,7 @@ const Dashboard = () => {
   };
 
   const handleCancelDelete = () => {
+    setIsEditBox(false);
     setExpenseToDelete(null);
     setShowModal(false);
     setError('');
@@ -143,7 +145,7 @@ const Dashboard = () => {
         ...editData,
       };
 
-      await axios.put('http://localhost:3500/expenses', updatedExpense, {
+      await axios.put(`${Apiconfig.BASE_URL}/expenses`, updatedExpense, {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
@@ -326,7 +328,7 @@ const Dashboard = () => {
               {isEditBox ? "":"Are you sure you want to delete this expense?"}
             </h3>
           )}
-          {!successMessage && !error && expenseToEdit && (
+          {!successMessage && !error && expenseToEdit && isEditBox && (
             <form onSubmit={handleEditConfirm}>
               <div className="mb-4">
                 <label className="block text-gray-700 mb-2">Date</label>
@@ -402,7 +404,7 @@ const Dashboard = () => {
                     Yes
                   </button>
                 )}
-                {expenseToEdit && (
+                {expenseToEdit && isEditBox && (
                   <button
                     onClick={handleEditConfirm}
                     className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"

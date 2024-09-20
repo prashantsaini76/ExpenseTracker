@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Apiconfig from "../config/Apiconfig";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -35,7 +36,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:3500/auth`,
+        `${Apiconfig.BASE_URL}/auth`,
         loginRequest
       );
 

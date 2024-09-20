@@ -2,6 +2,7 @@ import React, { useCallback, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Spinner from "./Spinner";
+import Apiconfig from "../config/Apiconfig";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -35,7 +36,7 @@ const Register = () => {
     try {
       // Make the registration API call
       const response = await axios.post(
-        "http://localhost:3500/register",
+        `${Apiconfig.BASE_URL}/register`,
         registerRequest
       );
       setIsLoading(false);
