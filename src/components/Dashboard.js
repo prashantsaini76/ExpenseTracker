@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Apiconfig from "../config/Apiconfig";
-import { IoAddCircle } from "react-icons/io5"
+import { IoAddCircle } from "react-icons/io5";
 import { GrPowerShutdown } from "react-icons/gr";
 import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
@@ -214,7 +214,7 @@ const Dashboard = () => {
 
   // ... (JSX will follow in the next part)
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="sm:min-h-[calc(100vh-200px)] bg-gray-100 mt-[50px] mb-[50px] w-[90%] mx-auto rounded-lg shadow-lg">
       <div className="container mx-auto py-8 px-4">
         <div className="flex justify-start gap-4 items-center mb-6">
           <h2 className="text-xl sm:text-3xl font-bold text-gray-800">
@@ -302,7 +302,9 @@ const Dashboard = () => {
                     <td className="px-5 py-3 text-gray-700 text-wrap text-left text-[12px] sm:text-lg">
                       {new Date(expense.date).toLocaleDateString()}
                     </td>
-                    <td className="px-5 py-3 text-gray-700 text-wrap text-left text-[12px] sm:text-lg">{expense.item}</td>
+                    <td className="px-5 py-3 text-gray-700 text-wrap text-left text-[12px] sm:text-lg">
+                      {expense.item}
+                    </td>
                     <td className="px-5 py-3 text-gray-700 text-wrap text-left text-[12px] sm:text-lg">
                       {expense.transferMode}
                     </td>
@@ -323,7 +325,7 @@ const Dashboard = () => {
                         onClick={() => handleEditClick(expense)}
                         className="bg-blue-500 text-white px-2 sm:px-4 py-1 sm:py-2 rounded-md mr-2 hover:bg-blue-600 transition duration-200"
                       >
-                       <FaEdit />
+                        <FaEdit />
                       </button>
                     </td>
                   </tr>
@@ -392,8 +394,7 @@ const Dashboard = () => {
                         <label className="block text-gray-700 mb-2">
                           Mode of Transfer
                         </label>
-                        <input
-                          type="text"
+                        <select
                           value={editData.transferMode}
                           onChange={(e) =>
                             setEditData({
@@ -403,7 +404,11 @@ const Dashboard = () => {
                           }
                           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                           required
-                        />
+                        >
+                          <option value="">Select</option>
+                          <option value="Online">Online</option>
+                          <option value="Cash">Cash</option>
+                        </select>
                       </div>
 
                       <div className="mb-4">
