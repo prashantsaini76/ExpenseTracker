@@ -271,7 +271,7 @@ const Dashboard = () => {
           </h3>
         </div>
 
-        <div className="flex-grow overflow-auto bg-white shadow-md mx-auto w-[90%] rounded-lg max-h-[500px] sm:max-h-[800px] mb-10">
+        <div className="flex-grow overflow-auto bg-white shadow-md mx-auto w-[90%] rounded-lg max-h-[500px] sm:max-h-[500px] mb-10">
         <table className="min-w-full divide-y">
             <thead>
               <tr>
@@ -421,7 +421,7 @@ const Dashboard = () => {
                           onChange={(e) =>
                             setEditData({
                               ...editData,
-                              bankName: e.target.value,
+                              bankName: e.target.value?.toUpperCase()
                             })
                           }
                           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
