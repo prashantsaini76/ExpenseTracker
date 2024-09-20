@@ -10,7 +10,7 @@ import AddExpensePage from "./components/AddExpensePage";
 function App() {
   return (
     <Router>
-      <div className="App">
+      <>
       {/*   <h1>Expense Tracker</h1> */}
         <Routes>
         <Route path="/" element={<Navigate to="/login" replace />} />
@@ -35,7 +35,7 @@ function App() {
             }
           />
         </Routes>
-      </div>
+      </>
     </Router>
   );
 }

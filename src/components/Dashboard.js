@@ -6,6 +6,7 @@ import { IoAddCircle } from "react-icons/io5";
 import { GrPowerShutdown } from "react-icons/gr";
 import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
+import Card from "./Card";
 
 const Dashboard = () => {
   const [expenses, setExpenses] = useState([]);
@@ -214,9 +215,8 @@ const Dashboard = () => {
 
   // ... (JSX will follow in the next part)
   return (
-    <div className="sm:min-h-[calc(100vh-200px)] bg-gray-100 mt-[50px] mb-[50px] w-[90%] mx-auto rounded-lg shadow-lg">
-      <div className="container mx-auto py-8 px-4">
-        <div className="flex justify-start gap-4 items-center mb-6">
+    <Card>
+        <div className="flex justify-center gap-4 items-center mb-6 mt-6">
           <h2 className="text-xl sm:text-3xl font-bold text-gray-800">
             Dashboard
           </h2>
@@ -236,7 +236,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="mb-4 flex items-center space-x-4">
+        <div className="mb-4 flex items-center space-x-4 mx-auto">
           <select
             value={filterMonth}
             onChange={(e) => setFilterMonth(e.target.value)}
@@ -265,14 +265,14 @@ const Dashboard = () => {
           </select>
         </div>
 
-        <div className="mb-4">
+        <div className="mb-4 mx-auto">
           <h3 className="text-sm sm:text-xl font-semibold text-gray-800">
             Total Amount: ₹{totalAmount}
           </h3>
         </div>
 
-        <div className="bg-white shadow-md rounded-lg overflow-y-auto overflow-x-auto">
-          <table className="min-w-full leading-normal">
+        <div className="flex-grow overflow-auto bg-white shadow-md mx-auto w-[90%] rounded-lg max-h-[500px] sm:max-h-[800px] mb-10">
+        <table className="min-w-full divide-y">
             <thead>
               <tr>
                 <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-lg uppercase font-semibold">
@@ -497,8 +497,7 @@ const Dashboard = () => {
             </div>
           </div>
         )}
-      </div>
-    </div>
+      </Card>
   );
 };
 
