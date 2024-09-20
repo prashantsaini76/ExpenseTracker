@@ -417,7 +417,7 @@ const Dashboard = () => {
                         </label>
                         <input
                           type="text"
-                          value={editData.bankName}
+                          value={editData?.bankName?.toUpperCase()}
                           onChange={(e) =>
                             setEditData({
                               ...editData,

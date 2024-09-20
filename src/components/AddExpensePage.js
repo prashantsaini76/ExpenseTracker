@@ -126,7 +126,7 @@ const AddExpensePage = () => {
                 <label className="block text-gray-700 mb-2">Bank Name</label>
                 <input
                   type="text"
-                  value={bankName}
+                  value={bankName.toUpperCase()}
                   placeholder="HDFC, SBI etc"
                   onChange={(e) => setBankName(e.target.value)}
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
