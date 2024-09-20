@@ -5,7 +5,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Dashboard from "./components/Dashboard";
 import Register from "./components/Register";
 import AddExpensePage from "./components/AddExpensePage";
-import Home from "./components/Home";
+
 
 function App() {
   return (
