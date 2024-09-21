@@ -19,6 +19,7 @@ const ExportToExcel = ({ tableData }) => {
       DATE: formatDate(row.date),
       "TRANSFER MODE": row.transferMode,
       ITEM: row.item,
+      "BANK NAME": row.bankName,
       AMOUNT: row.amount,
     }));
 
@@ -30,6 +31,7 @@ const ExportToExcel = ({ tableData }) => {
       DATE: "Total",
       "TRANSFER MODE": "",
       ITEM: "",
+      "BANK NAME":"",
       AMOUNT: `₹${totalAmount.toFixed(2)}`,
     });
 
