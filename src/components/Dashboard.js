@@ -323,7 +323,7 @@ const Dashboard = () => {
               placeholder="Search..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 text-sm sm:text-lg pr-4 py-1 sm:py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 w-[150px] sm:w-[200px]"
+              className="pl-10 text-sm sm:text-lg pr-4 py-1 sm:py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 w-[130px] sm:w-[200px]"
             />
             <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
           </div>
@@ -332,13 +332,13 @@ const Dashboard = () => {
             <button
               onClick={prevPage}
               disabled={currentPage === 1}
-              className={`px-2 sm:px-3 py-1 rounded ${
+              className={`px-1 sm:px-3 py-1 rounded ${
                 currentPage === 1
                   ? "bg-gray-300 text-gray-500 cursor-not-allowed"
                   : "bg-blue-500 text-white hover:bg-blue-600"
               }`}
             >
-              <FaChevronLeft />
+              <FaChevronLeft className="size-[10px] sm:size-fit" />
             </button>
             <span className="text-[12px] sm:text-sm text-gray-600 p-2">
               Results {indexOfFirstItem + 1} to{" "}
@@ -348,13 +348,13 @@ const Dashboard = () => {
             <button
               onClick={nextPage}
               disabled={currentPage === totalPages}
-              className={`px-2 sm:px-3 py-1 rounded ${
+              className={`px-1 sm:px-3 py-1 rounded ${
                 currentPage === totalPages
                   ? "bg-gray-300 text-gray-500 cursor-not-allowed"
                   : "bg-blue-500 text-white hover:bg-blue-600"
               }`}
             >
-              <FaChevronRight />
+              <FaChevronRight className="size-[10px] sm:size-fit"/>
             </button>
           </div>
         </div>
