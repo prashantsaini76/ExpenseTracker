@@ -11,6 +11,7 @@ import Card from "./Card";
 import ExportToPdf from "./ExportToPdf";
 import ExportToExcel from "./ExportToExcel";
 import Spinner from './Spinner'
+import { BsGraphUpArrow } from "react-icons/bs";
 
 const Dashboard = () => {
   const [expenses, setExpenses] = useState([]);
@@ -293,6 +294,12 @@ const Dashboard = () => {
             className="bg-blue-500 text-white px-2 sm:px-2 py-1 rounded-md  hover:bg-blue-600"
           >
             <IoAddCircle />
+          </button>
+          <button
+            onClick={() => navigate("/monthly-analysis")}
+            className="bg-green-500 text-white px-2 sm:px-2 py-1 rounded-md hover:bg-green-600"
+          >
+           <BsGraphUpArrow/>
           </button>
           <ExportToPdf tableData={expenses} />
           <ExportToExcel tableData={expenses}/>

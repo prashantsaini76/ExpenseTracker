@@ -68,3 +68,15 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+# npm install @radix-ui/react-slot class-variance-authority clsx tailwind-merge
+
+# npm i -D @shadcn/ui
+
+# npm i -D @shadcn/ui
+
+# npx shadcn-ui@latest init
+
+# npx shadcn-ui@latest add card
