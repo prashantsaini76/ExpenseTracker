@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Spinner from "./Spinner";
-import Apiconfig from '../config/Apiconfig'
+import Apiconfig from "../config/Apiconfig";
 
 const AddExpensePage = () => {
   const [date, setDate] = useState("");
@@ -10,6 +10,7 @@ const AddExpensePage = () => {
   const [amount, setAmount] = useState("");
   const [bankName, setBankName] = useState("");
   const [modeOfTransfer, setmodeOfTransfer] = useState("");
+  const [category, setCategory] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -72,6 +73,25 @@ const AddExpensePage = () => {
     navigate("/dashboard"); // Navigate back to dashboard on cancel
   };
 
+  const categories = [
+    "Food",
+    "Rent",
+    "EMI",
+    "Bills",
+    "Travel",
+    "Shopping",
+    "Fitness",
+    "Beauty",
+    "Groceries",
+    "Medical",
+    "Home Services",
+    "Entertainment",
+    "Offering",
+    "Fuel",
+    "Transfer to a person",
+    "Other"
+  ];
+
   return (
     <>
       {isLoading ? (
@@ -106,6 +126,24 @@ const AddExpensePage = () => {
                   required
                 />
               </div>
+
+              <div className="mb-4">
+                <label className="block text-gray-700 mb-2">Category</label>
+                <select
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  required
+                >
+                  <option value="">Select</option>
+                  {categories.map((cat, index) => (
+                    <option key={index} value={cat}>
+                      {cat}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
               <div className="mb-4">
                 <label className="block text-gray-700 mb-2">
                   Mode of Transfer

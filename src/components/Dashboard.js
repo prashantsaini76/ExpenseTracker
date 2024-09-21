@@ -10,6 +10,7 @@ import { FaSearch, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Card from "./Card";
 import ExportToPdf from "./ExportToPdf";
 import ExportToExcel from "./ExportToExcel";
+import Spinner from './Spinner'
 
 const Dashboard = () => {
   const [expenses, setExpenses] = useState([]);
@@ -23,9 +24,11 @@ const Dashboard = () => {
     transferMode: "",
     bankName: "",
     item: "",
+    category:"",
     amount: "",
   });
   const [loading, setLoading] = useState(false);
+  const [expenseApiLoading, setExpenseApiLoading]=useState(false);
   const [error, setError] = useState("");
   const [fetchError, setFetchError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
@@ -34,13 +37,14 @@ const Dashboard = () => {
   const [totalAmount, setTotalAmount] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(10);
+  const [itemsPerPage] = useState(60);
   const navigate = useNavigate();
 
   // ... (useEffect hooks and other functions will follow in the next parts)
 
   useEffect(() => {
     const fetchExpenses = async () => {
+      setExpenseApiLoading(true);
       const authToken = localStorage.getItem("authToken");
 
       if (!authToken) {
@@ -57,11 +61,13 @@ const Dashboard = () => {
         setExpenses(response.data);
         setFilteredExpenses(response.data);
         calculateTotalAmount(response.data);
+        setExpenseApiLoading(false);
       } catch (error) {
         setFetchError(
           `Error Occurred! ${error.response?.data?.message || error.message}`
         );
         setShowModal(true);
+        setExpenseApiLoading(false);
       }
     };
 
@@ -186,6 +192,7 @@ const Dashboard = () => {
       transferMode: expense.transferMode,
       bankName: expense.bankName,
       item: expense.item,
+      category: expense.category,
       amount: expense.amount,
     });
     setShowModal(true);
@@ -234,6 +241,7 @@ const Dashboard = () => {
       transferMode: "",
       bankName: "",
       item: "",
+      category:"",
       amount: "",
     });
   };
@@ -250,6 +258,25 @@ const Dashboard = () => {
 
   const years = [
     ...new Set(expenses.map((expense) => new Date(expense.date).getFullYear())),
+  ];
+
+  const categories = [
+    "Food",
+    "Rent",
+    "EMI",
+    "Bills",
+    "Travel",
+    "Shopping",
+    "Fitness",
+    "Beauty",
+    "Groceries",
+    "Medical",
+    "Home Services",
+    "Entertainment",
+    "Offering",
+    "Fuel",
+    "Transfer to a person",
+    "Other"
   ];
 
   // ... (JSX will follow in the next part)
@@ -368,39 +395,45 @@ const Dashboard = () => {
 
       <div className="flex-grow overflow-auto bg-white shadow-md mx-auto w-[90%] rounded-lg max-h-[500px] sm:max-h-[450px] mb-10">
        
-
-        <table className="min-w-full divide-y">
-          <thead>
-            <tr>
-              <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
-                Date
-              </th>
-              <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
-                Debit Item
-              </th>
-              <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
-                Mode
-              </th>
-              <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
-                Debit From
-              </th>
-              <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
-                Amount (₹)
-              </th>
-              <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
-                Operation
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {currentItems.length > 0 ? (
-              currentItems.map((expense) => (
+            {expenseApiLoading ? <Spinner/> :  currentItems.length > 0 ? (
+               <table className="min-w-full divide-y">
+               <thead>
+                 <tr>
+                   <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
+                     Date
+                   </th>
+                   <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
+                     Debit Item
+                   </th>
+                   <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
+                     Category
+                   </th>
+                   <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
+                     Mode
+                   </th>
+                   <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
+                     Debit From
+                   </th>
+                   <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
+                     Amount (₹)
+                   </th>
+                   <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
+                     Operation
+                   </th>
+                 </tr>
+               </thead>
+             
+              {currentItems.map((expense) => (
+                  <tbody>
                 <tr key={expense._id} className="border-b">
                   <td className="px-5 py-3 text-gray-700 text-wrap text-left text-[12px] sm:text-sm">
                     {new Date(expense.date).toLocaleDateString()}
                   </td>
                   <td className="px-5 py-3 text-gray-700 text-wrap text-left text-[12px] sm:text-sm">
                     {expense.item}
+                  </td>
+                  <td className="px-5 py-3 text-gray-700 text-wrap text-left text-[12px] sm:text-sm">
+                    {expense.category}
                   </td>
                   <td className="px-5 py-3 text-gray-700 text-wrap text-left text-[12px] sm:text-sm">
                     {expense.transferMode}
@@ -426,23 +459,21 @@ const Dashboard = () => {
                     </button>
                   </td>
                 </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan="6" className="px-5 py-5 text-center text-gray-500">
-                  No expenses found
-                </td>
-              </tr>
-            )}
+             
+            
           </tbody>
+           ))}
         </table>
+            ) :(<div className="w-[200px] shadow-lg bg-gray-200 mx-auto mt-10 p-4 rounded-lg mb-10 text-center">No data found</div>)}
+       
+          
       </div>
 
       {showModal && (
         <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg p-6 w-full max-w-sm">
             {loading ? (
-              <div className="text-center">Processing...</div>
+             <Spinner/>
             ) : (
               <>
                 {error && (
@@ -534,6 +565,33 @@ const Dashboard = () => {
                         required
                       />
                     </div>
+
+
+                    <div className="mb-4">
+                      <label className="block text-gray-700 mb-2">
+                        Category
+                      </label>
+                      <select
+                        value={editData.category}
+                        onChange={(e) =>
+                          setEditData({
+                            ...editData,
+                            category: e.target.value,
+                          })
+                        }
+                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        required
+                      >
+                        <option value="">Select</option>
+                        {categories.map((cat, index) => (
+                    <option key={index} value={cat}>
+                      {cat}
+                    </option>
+                  ))}
+                      </select>
+                    </div>
+
+
                     <div className="mb-4">
                       <label className="block text-gray-700 mb-2">Amount</label>
                       <input

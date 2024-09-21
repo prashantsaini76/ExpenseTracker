@@ -11,7 +11,7 @@ const ExportToPdf = ({ tableData }) => {
     // Define the table column headers from the data
    // const tableColumn = Object.keys(tableData[0]);
 
-   const tableColumn = ["DATE", "TRANSFER MODE", "ITEM", "BANK NAME", "AMOUNT"];
+   const tableColumn = ["DATE", "TRANSFER MODE", "ITEM", "CATEGORY", "BANK NAME", "AMOUNT"];
 
     // Map the table data to an array of arrays (table rows)
     //const tableRows = tableData.map((row) => Object.values(row));
@@ -31,6 +31,7 @@ const ExportToPdf = ({ tableData }) => {
         formatDate(row.date),
         row.transferMode,
         row.item,
+        row.category,
         row.bankName,
         row.amount,
       ]);
@@ -38,7 +39,7 @@ const ExportToPdf = ({ tableData }) => {
       const totalAmount = tableData.reduce((acc, row) => acc + parseFloat(row.amount), 0);
 
     // Add a title to the PDF
-    doc.text(`Expense Data (Total Amount Rs:${totalAmount}/-)`, 14, 16);
+    doc.text(`Expense Data (Total Amount Rs ${totalAmount})`, 14, 16);
 
 
 
