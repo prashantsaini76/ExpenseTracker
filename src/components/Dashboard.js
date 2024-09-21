@@ -10,7 +10,7 @@ import { FaSearch, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Card from "./Card";
 import ExportToPdf from "./ExportToPdf";
 import ExportToExcel from "./ExportToExcel";
-import Spinner from './Spinner'
+import Spinner from "./Spinner";
 import { BsGraphUpArrow } from "react-icons/bs";
 
 const Dashboard = () => {
@@ -25,11 +25,11 @@ const Dashboard = () => {
     transferMode: "",
     bankName: "",
     item: "",
-    category:"",
+    category: "",
     amount: "",
   });
   const [loading, setLoading] = useState(false);
-  const [expenseApiLoading, setExpenseApiLoading]=useState(false);
+  const [expenseApiLoading, setExpenseApiLoading] = useState(false);
   const [error, setError] = useState("");
   const [fetchError, setFetchError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
@@ -242,7 +242,7 @@ const Dashboard = () => {
       transferMode: "",
       bankName: "",
       item: "",
-      category:"",
+      category: "",
       amount: "",
     });
   };
@@ -277,7 +277,7 @@ const Dashboard = () => {
     "Offering",
     "Fuel",
     "Transfer to a person",
-    "Other"
+    "Other",
   ];
 
   // ... (JSX will follow in the next part)
@@ -287,7 +287,7 @@ const Dashboard = () => {
         <h2 className="text-xl sm:text-2xl font-bold text-gray-800">
           Dashboard
         </h2>
-      
+
         <div className="flex gap-1 items-center">
           <button
             onClick={() => navigate("/add-expense")}
@@ -299,24 +299,19 @@ const Dashboard = () => {
             onClick={() => navigate("/monthly-analysis")}
             className="bg-green-500 text-white px-2 sm:px-2 py-1 rounded-md hover:bg-green-600"
           >
-           <BsGraphUpArrow/>
+            <BsGraphUpArrow />
           </button>
           <ExportToPdf tableData={expenses} />
-          <ExportToExcel tableData={expenses}/>
-         
+          <ExportToExcel tableData={expenses} />
 
-         
           <button
             onClick={handleLogout}
             className="bg-red-500 text-white px-2 sm:px-2 py-1 rounded-md hover:bg-red-600"
           >
             <GrPowerShutdown />
-            
           </button>
-          </div>
-         
         </div>
-      
+      </div>
 
       <div className="mb-4 flex items-center space-x-4 mx-auto">
         <select
@@ -358,80 +353,81 @@ const Dashboard = () => {
       </div>
 
       <div className="flex justify-between gap-2 items-center mx-auto w-[90%] p-3">
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="Search..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 text-sm sm:text-lg pr-4 py-1 sm:py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 w-[130px] sm:w-[200px]"
-            />
-            <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-          </div>
-
-          <div>
-            <button
-              onClick={prevPage}
-              disabled={currentPage === 1}
-              className={`px-1 sm:px-3 py-1 rounded ${
-                currentPage === 1
-                  ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                  : "bg-blue-500 text-white hover:bg-blue-600"
-              }`}
-            >
-              <FaChevronLeft className="size-[10px] sm:size-fit" />
-            </button>
-            <span className="text-[12px] sm:text-sm text-gray-600 p-2">
-              Results {indexOfFirstItem + 1} to{" "}
-              {Math.min(indexOfLastItem, filteredExpenses.length)} of{" "}
-              {filteredExpenses.length}
-            </span>
-            <button
-              onClick={nextPage}
-              disabled={currentPage === totalPages}
-              className={`px-1 sm:px-3 py-1 rounded ${
-                currentPage === totalPages
-                  ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                  : "bg-blue-500 text-white hover:bg-blue-600"
-              }`}
-            >
-              <FaChevronRight className="size-[10px] sm:size-fit"/>
-            </button>
-          </div>
+        <div className="relative">
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="pl-10 text-sm sm:text-lg pr-4 py-1 sm:py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 w-[130px] sm:w-[200px]"
+          />
+          <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
         </div>
 
+        <div>
+          <button
+            onClick={prevPage}
+            disabled={currentPage === 1}
+            className={`px-1 sm:px-3 py-1 rounded ${
+              currentPage === 1
+                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                : "bg-blue-500 text-white hover:bg-blue-600"
+            }`}
+          >
+            <FaChevronLeft className="size-[10px] sm:size-fit" />
+          </button>
+          <span className="text-[12px] sm:text-sm text-gray-600 p-2">
+            Results {indexOfFirstItem + 1} to{" "}
+            {Math.min(indexOfLastItem, filteredExpenses.length)} of{" "}
+            {filteredExpenses.length}
+          </span>
+          <button
+            onClick={nextPage}
+            disabled={currentPage === totalPages}
+            className={`px-1 sm:px-3 py-1 rounded ${
+              currentPage === totalPages
+                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                : "bg-blue-500 text-white hover:bg-blue-600"
+            }`}
+          >
+            <FaChevronRight className="size-[10px] sm:size-fit" />
+          </button>
+        </div>
+      </div>
+
       <div className="flex-grow overflow-auto bg-white shadow-md mx-auto w-[90%] rounded-lg max-h-[500px] sm:max-h-[450px] mb-10">
-       
-            {expenseApiLoading ? <Spinner/> :  currentItems.length > 0 ? (
-               <table className="min-w-full divide-y">
-               <thead>
-                 <tr>
-                   <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
-                     Date
-                   </th>
-                   <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
-                     Debit Item
-                   </th>
-                   <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
-                     Category
-                   </th>
-                   <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
-                     Mode
-                   </th>
-                   <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
-                     Debit From
-                   </th>
-                   <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
-                     Amount (₹)
-                   </th>
-                   <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
-                     Operation
-                   </th>
-                 </tr>
-               </thead>
-             
-              {currentItems.map((expense) => (
-                  <tbody>
+        {expenseApiLoading ? (
+          <Spinner />
+        ) : currentItems.length > 0 ? (
+          <table className="min-w-full divide-y">
+            <thead>
+              <tr>
+                <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
+                  Date
+                </th>
+                <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
+                  Debit Item
+                </th>
+                <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
+                  Category
+                </th>
+                <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
+                  Mode
+                </th>
+                <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
+                  Debit From
+                </th>
+                <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
+                  Amount (₹)
+                </th>
+                <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
+                  Operation
+                </th>
+              </tr>
+            </thead>
+
+            {currentItems.map((expense) => (
+              <tbody>
                 <tr key={expense._id} className="border-b">
                   <td className="px-5 py-3 text-gray-700 text-wrap text-left text-[12px] sm:text-sm">
                     {new Date(expense.date).toLocaleDateString()}
@@ -466,21 +462,21 @@ const Dashboard = () => {
                     </button>
                   </td>
                 </tr>
-             
-            
-          </tbody>
-           ))}
-        </table>
-            ) :(<div className="w-[200px] shadow-lg bg-gray-200 mx-auto mt-10 p-4 rounded-lg mb-10 text-center">No data found</div>)}
-       
-          
+              </tbody>
+            ))}
+          </table>
+        ) : (
+          <div className="w-[200px] shadow-lg bg-gray-200 mx-auto mt-10 p-4 rounded-lg mb-10 text-center">
+            No data found
+          </div>
+        )}
       </div>
 
       {showModal && (
         <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg p-6 w-full max-w-sm">
             {loading ? (
-             <Spinner/>
+              <Spinner />
             ) : (
               <>
                 {error && (
@@ -573,7 +569,6 @@ const Dashboard = () => {
                       />
                     </div>
 
-
                     <div className="mb-4">
                       <label className="block text-gray-700 mb-2">
                         Category
@@ -591,13 +586,12 @@ const Dashboard = () => {
                       >
                         <option value="">Select</option>
                         {categories.map((cat, index) => (
-                    <option key={index} value={cat}>
-                      {cat}
-                    </option>
-                  ))}
+                          <option key={index} value={cat}>
+                            {cat}
+                          </option>
+                        ))}
                       </select>
                     </div>
-
 
                     <div className="mb-4">
                       <label className="block text-gray-700 mb-2">Amount</label>

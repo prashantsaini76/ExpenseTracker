@@ -37,6 +37,7 @@ const AddExpensePage = () => {
         transferMode: modeOfTransfer,
         bankName: bankName,
         item: item,
+        category: category,
         amount: parseFloat(amount),
       };
 
