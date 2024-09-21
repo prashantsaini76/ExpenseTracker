@@ -259,6 +259,7 @@ const Dashboard = () => {
         <h2 className="text-xl sm:text-2xl font-bold text-gray-800">
           Dashboard
         </h2>
+      
         <div className="flex gap-1 items-center">
           <button
             onClick={() => navigate("/add-expense")}
@@ -266,16 +267,22 @@ const Dashboard = () => {
           >
             <IoAddCircle />
           </button>
+          <ExportToPdf tableData={expenses} />
+          <ExportToExcel tableData={expenses}/>
+         
+
+         
           <button
             onClick={handleLogout}
             className="bg-red-500 text-white px-2 sm:px-2 py-1 rounded-md hover:bg-red-600"
           >
             <GrPowerShutdown />
+            
           </button>
-          <ExportToPdf tableData={expenses} />
-          <ExportToExcel tableData={expenses}/>
+          </div>
+         
         </div>
-      </div>
+      
 
       <div className="mb-4 flex items-center space-x-4 mx-auto">
         <select
