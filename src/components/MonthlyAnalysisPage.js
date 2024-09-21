@@ -111,7 +111,7 @@ const MonthlyAnalysisPage = () => {
       doc.addImage(imgData, "PNG", 10, 30, 190, 100);
     }
 
-    const tableColumn = ["Category", "Amount (₹)"];
+    const tableColumn = ["Category", "Amount"];
     const tableRows = categoryData.map((item) => [
       item.category,
       item.amount.toFixed(2),
