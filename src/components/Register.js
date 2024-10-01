@@ -64,9 +64,9 @@ const Register = () => {
       {isLoading ? (
         <Spinner />
       ) : (
-        <div className="sm:min-h-screen sm:bg-gray-100 flex justify-center items-center mt-[200px] sm:mt-0">
-          <div className="bg-white p-8 rounded-lg shadow-lg w-[300px] sm:w-[500px]">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6">
+        <div className="sm:min-h-screen sm:bg-[#181c2c] flex justify-center items-center mt-[200px] sm:mt-0">
+          <div className="p-8 rounded-lg shadow-lg w-[300px] sm:w-[400px] bg-[#080b17]">
+            <h2 className="text-2xl font-bold text-white mb-6">
               {successMessage ? "Success" : "Create Account"}
             </h2>
 
@@ -110,12 +110,12 @@ const Register = () => {
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-black text-white px-4 py-3 rounded-lg transition duration-200"
+                  className="w-full bg-[#05aeee] text-white px-4 py-3 rounded-lg transition duration-200"
                 >
                   Register
                 </button>
                 <br/><br/>
-                <div>Already have an account? <Link to='/login'><span className="underline text-blue-600">Login</span></Link> here </div>                     
+                <div className="text-white">Already have an account? <Link to='/login'><span className="underline text-blue-600">Login</span></Link> here </div>                     
               </form>
               
             )}

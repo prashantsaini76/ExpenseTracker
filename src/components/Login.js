@@ -62,9 +62,9 @@ const Login = () => {
   //console.log("Rendering Login component. isOpen:", isOpen);
 
   return (
-    <div className="sm:min-h-screen sm:bg-gray-100 flex justify-center items-center mt-[200px] sm:mt-0">
-      <div className="flex flex-col flex-shrink gap-4 mx-auto w-[300px] sm:w-[500px] shadow-lg items-center justify-center bg-white rounded-lg px-8 py-[50px]">
-      <h2 className="text-2xl font-bold text-gray-800 mb-6">Login</h2>
+    <div className="sm:min-h-screen sm:bg-[#181c2c] flex justify-center items-center mt-[200px] sm:mt-0">
+      <div className="flex flex-col flex-shrink gap-4 mx-auto w-[300px] sm:w-[400px] shadow-lg items-center justify-center bg-[#080b17] rounded-lg px-8 py-[50px]">
+      <h2 className="text-2xl font-bold text-white mb-6">Login</h2>
         <form onSubmit={handleLogin} className="w-full">
           <div className="w-full mb-4">
             
@@ -88,7 +88,7 @@ const Login = () => {
             />
           </div>
           <button
-            className="border-none w-full p-3 rounded-2xl bg-black text-white"
+            className="border-none w-full p-3 rounded-2xl bg-[#05aeee] text-white"
             type="submit"
             disabled={isLoading}
           >
@@ -96,15 +96,15 @@ const Login = () => {
           </button>
         
         </form>
-        <div>Not having an account? <Link to='/Register'><span className="underline text-blue-600">Sign Up</span></Link> here </div>
+        <div className="text-white">Not having an account? <Link to='/Register'><span className="underline text-blue-600">Sign Up</span></Link> here </div>
       </div>
 
       {isOpen && (
         <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white rounded-lg shadow-lg w-[300px]">
+          <div className="bg-[#0b0d17] text-white rounded-lg shadow-2xl w-[300px]">
             <div className="p-5 flex flex-col justify-center items-center">
               <h2 className="text-2xl font-bold mb-4">Login Failed</h2>
-              <p className="text-gray-600 mb-4">
+              <p className="text-white mb-4">
                 {error}
               </p>
               <button

@@ -284,7 +284,7 @@ const Dashboard = () => {
   return (
     <Card>
       <div className="flex justify-center gap-4 items-center mb-6 mt-6">
-        <h2 className="text-xl sm:text-2xl font-bold text-gray-800">
+        <h2 className="text-xl sm:text-2xl font-bold text-white">
           Dashboard
         </h2>
 
@@ -317,7 +317,7 @@ const Dashboard = () => {
         <select
           value={filterMonth}
           onChange={(e) => setFilterMonth(e.target.value)}
-          className="text-[12px] sm:text-[14px] px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="text-[12px] sm:text-[14px] px-4 py-2 border bg-[#181c2c] text-white border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
         >
           <option value="">All Months</option>
           {Array.from({ length: 12 }, (_, i) => i + 1).map((month) => (
@@ -331,7 +331,7 @@ const Dashboard = () => {
         <select
           value={filterYear}
           onChange={(e) => setFilterYear(e.target.value)}
-          className="text-[12px] sm:text-[14px] px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="text-[12px] sm:text-[14px] px-4 py-2 border bg-[#181c2c] text-white border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
         >
           <option value="">All Years</option>
           {[
@@ -347,7 +347,7 @@ const Dashboard = () => {
       </div>
 
       <div className="mb-4 mx-auto">
-        <h3 className="text-sm sm:text-lg font-semibold text-gray-800">
+        <h3 className="text-sm sm:text-lg font-semibold text-white">
           Total Amount: ₹{totalAmount}
         </h3>
       </div>
@@ -359,7 +359,7 @@ const Dashboard = () => {
             placeholder="Search..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10 text-sm sm:text-lg pr-4 py-1 sm:py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 w-[130px] sm:w-[200px]"
+            className="pl-10 text-sm sm:text-lg bg-[#181c2c] text-white pr-4 py-1 sm:py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 w-[130px] sm:w-[200px]"
           />
           <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
         </div>
@@ -376,7 +376,7 @@ const Dashboard = () => {
           >
             <FaChevronLeft className="size-[10px] sm:size-fit" />
           </button>
-          <span className="text-[12px] sm:text-sm text-gray-600 p-2">
+          <span className="text-[12px] sm:text-sm bg-[#181c2c] text-white p-2">
             Results {indexOfFirstItem + 1} to{" "}
             {Math.min(indexOfLastItem, filteredExpenses.length)} of{" "}
             {filteredExpenses.length}
@@ -395,32 +395,32 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="flex-grow overflow-auto bg-white shadow-md mx-auto w-[90%] rounded-lg max-h-[500px] sm:max-h-[450px] mb-10">
+      <div className="flex-grow overflow-auto bg-[#181c2c] shadow-xl mx-auto w-[90%] rounded-lg max-h-[500px] sm:max-h-[450px] mb-10">
         {expenseApiLoading ? (
           <Spinner />
         ) : currentItems.length > 0 ? (
           <table className="min-w-full divide-y">
             <thead>
               <tr>
-                <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
+                <th className="px-5 py-3 bg-[#05aeee] text-white text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
                   Date
                 </th>
-                <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
+                <th className="px-5 py-3 bg-[#05aeee] text-white text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
                   Debit Item
                 </th>
-                <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
+                <th className="px-5 py-3 bg-[#05aeee] text-white text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
                   Category
                 </th>
-                <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
+                <th className="px-5 py-3 bg-[#05aeee] text-white text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
                   Mode
                 </th>
-                <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
+                <th className="px-5 py-3 bg-[#05aeee] text-white text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
                   Debit From
                 </th>
-                <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
+                <th className="px-5 py-3 bg-[#05aeee] text-white text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
                   Amount (₹)
                 </th>
-                <th className="px-5 py-3 bg-gray-100 text-gray-600 text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
+                <th className="px-5 py-3 bg-[#05aeee] text-white text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
                   Operation
                 </th>
               </tr>
@@ -429,25 +429,25 @@ const Dashboard = () => {
             {currentItems.map((expense) => (
               <tbody>
                 <tr key={expense._id} className="border-b">
-                  <td className="px-5 py-3 text-gray-700 text-wrap text-left text-[12px] sm:text-sm">
+                  <td className="px-5 py-3 bg-[#181c2c] text-white text-wrap text-left text-[12px] sm:text-sm">
                     {new Date(expense.date).toLocaleDateString()}
                   </td>
-                  <td className="px-5 py-3 text-gray-700 text-wrap text-left text-[12px] sm:text-sm">
+                  <td className="px-5 py-3 bg-[#181c2c] text-white text-wrap text-left text-[12px] sm:text-sm">
                     {expense.item}
                   </td>
-                  <td className="px-5 py-3 text-gray-700 text-wrap text-left text-[12px] sm:text-sm">
+                  <td className="px-5 py-3 bg-[#181c2c] text-white text-wrap text-left text-[12px] sm:text-sm">
                     {expense.category}
                   </td>
-                  <td className="px-5 py-3 text-gray-700 text-wrap text-left text-[12px] sm:text-sm">
+                  <td className="px-5 py-3 bg-[#181c2c] text-white text-wrap text-left text-[12px] sm:text-sm">
                     {expense.transferMode}
                   </td>
-                  <td className="px-5 py-3 text-gray-700 text-wrap text-left text-[12px] sm:text-sm">
+                  <td className="px-5 py-3 bg-[#181c2c] text-white text-wrap text-left text-[12px] sm:text-sm">
                     {expense.bankName}
                   </td>
-                  <td className="px-5 py-3 text-gray-700 text-wrap text-left text-[12px] sm:text-sm">
+                  <td className="px-5 py-3 bg-[#181c2c] text-white text-wrap text-left text-[12px] sm:text-sm">
                     {expense.amount}
                   </td>
-                  <td className="px-5 py-3 flex space-x-2">
+                  <td className="px-5 py-3 flex space-x-2 bg-[#181c2c] text-white">
                     <button
                       onClick={() => handleDeleteClick(expense._id)}
                       className="bg-red-500 text-white px-2 sm:px-2 py-1 sm:py-2 rounded-md mr-2 hover:bg-red-600 transition duration-200"

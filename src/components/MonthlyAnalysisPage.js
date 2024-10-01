@@ -133,7 +133,7 @@ const MonthlyAnalysisPage = () => {
   if (error) return <div className="text-red-500">{error}</div>;
 
   return (
-    <div className=" w-[80%] mx-auto mt-8 p-4 mb-8 rounded-lg shadow-lg bg-gray-100">
+    <div className=" w-[80%] mx-auto mt-8 p-4 mb-8 rounded-lg shadow-lg bg-[#151a30] text-white">
       <div className="flex flex-col gap-2 justify-center items-center mb-6">
         <button
           onClick={() => navigate("/dashboard")}
@@ -142,7 +142,7 @@ const MonthlyAnalysisPage = () => {
           <IoChevronBackCircleSharp />
         </button>
 
-        <h2 className="text-xl sm:text-2xl font-bold text-gray-800">
+        <h2 className="text-xl sm:text-2xl font-bold text-white">
           Monthly Analysis
         </h2>
         <div className="flex space-x-2">
@@ -157,11 +157,11 @@ const MonthlyAnalysisPage = () => {
         </div>
       </div>
 
-      <div className="mb-4 flex items-center space-x-4">
+      <div className="mb-4 flex items-center justify-center space-x-4">
         <select
           value={selectedMonth}
           onChange={(e) => setSelectedMonth(e.target.value)}
-          className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="px-4 py-2 border border-gray-300 bg-[#181c2c] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
         >
           <option value="">Select Month</option>
           {Array.from({ length: 12 }, (_, i) => i + 1).map((month) => (
@@ -175,7 +175,7 @@ const MonthlyAnalysisPage = () => {
         <select
           value={selectedYear}
           onChange={(e) => setSelectedYear(e.target.value)}
-          className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="px-4 py-2 border border-gray-300 rounded-md bg-[#181c2c] text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
         >
           <option value="">Select Year</option>
           {years.map((year) => (
@@ -188,7 +188,7 @@ const MonthlyAnalysisPage = () => {
 
       {selectedMonth && selectedYear && categoryData.length > 0 && (
         <div>
-          <div className="mb-8" ref={chartRef}>
+          <div className="mb-8 text-white" ref={chartRef} >
             <h3 className="text-lg font-semibold mb-4">Expense Distribution</h3>
             <ResponsiveContainer width="100%" height={400}>
               <BarChart data={categoryData}>
@@ -204,16 +204,16 @@ const MonthlyAnalysisPage = () => {
 
           <div>
             <h3 className="text-lg font-semibold mb-4">
-              Category-wise Expenses (Sorted by Amount)
+              Category-Wise Expenses (Sorted by Amount)
             </h3>
-            <div className="overflow-x-auto">
+            <div className="overflow-y-auto h-[500px]">
               <table className="min-w-full bg-white">
-                <thead className="bg-gray-100">
+                <thead className="bg-[#05aeee]">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                       Category
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                       Amount (₹)
                     </th>
                   </tr>
@@ -221,10 +221,10 @@ const MonthlyAnalysisPage = () => {
                 <tbody className="divide-y divide-gray-200">
                   {categoryData.map((item) => (
                     <tr key={item.category}>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-white bg-[#0d1124]">
                         {item.category}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-white bg-[#0d1124]">
                         {item.amount.toFixed(2)}
                       </td>
                     </tr>
