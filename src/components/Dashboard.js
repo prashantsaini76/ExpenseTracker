@@ -81,40 +81,59 @@ const Dashboard = () => {
 
   const filterExpenses = () => {
     let filtered = expenses;
-    if (filterYear) {
-      filtered = filtered.filter((expense) => {
-        const expenseDate = new Date(expense.date);
-        return expenseDate.getFullYear() === parseInt(filterYear);
-      });
-    }
 
-    if (filterMonth) {
-      filtered = filtered.filter((expense) => {
-        const expenseDate = new Date(expense.date);
-        return expenseDate.getMonth() + 1 === parseInt(filterMonth);
-      });
-    }
+    if(filtered){
 
-    if (searchTerm) {
-      filtered = filtered.filter((expense) =>
-        Object.values(expense).some((value) =>
-          value.toString().toLowerCase().includes(searchTerm.toLowerCase())
-        )
-      );
-    }
+      if (filterYear) {
+        filtered = filtered.filter((expense) => {
+          const expenseDate = new Date(expense.date);
+          return expenseDate.getFullYear() === parseInt(filterYear);
+        });
+      }
+  
+      if (filterMonth) {
+        filtered = filtered?.filter((expense) => {
+          const expenseDate = new Date(expense.date);
+          return expenseDate.getMonth() + 1 === parseInt(filterMonth);
+        });
+      }
+  
+      if (searchTerm) {
+        filtered = filtered?.filter((expense) =>
+          Object.values(expense).some((value) =>
+            value.toString().toLowerCase().includes(searchTerm.toLowerCase())
+          )
+        );
+      }
+  
+      setFilteredExpenses(filtered);
+      calculateTotalAmount(filtered);
+      setCurrentPage(1);
 
-    setFilteredExpenses(filtered);
-    calculateTotalAmount(filtered);
-    setCurrentPage(1);
+    }
+   
   };
 
-  const calculateTotalAmount = (expensesArray) => {
-    const total = expensesArray.reduce(
-      (sum, expense) => sum + parseFloat(expense.amount),
-      0
-    );
-    setTotalAmount(total.toFixed(2));
-  };
+ 
+
+  
+
+    const calculateTotalAmount = (expensesArray) => {
+
+      if (expensesArray){
+
+        const total = expensesArray?.reduce(
+          (sum, expense) => sum + parseFloat(expense.amount),
+          0
+        );
+        setTotalAmount(total.toFixed(2));
+
+      }
+     
+    };
+
+  
+ 
 
   // Pagination
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -257,10 +276,10 @@ const Dashboard = () => {
     return today.toISOString().split("T")[0];
   };
 
-  const years = [
-    ...new Set(expenses.map((expense) => new Date(expense.date).getFullYear())),
+ /*  const years = [
+    ...new Set(expenses?.map((expense) => new Date(expense.date).getFullYear())),
   ];
-
+ */
   const categories = [
     "Food",
     "Rent",
@@ -334,15 +353,11 @@ const Dashboard = () => {
           className="text-[12px] sm:text-[14px] px-4 py-2 border bg-[#181c2c] text-white border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
         >
           <option value="">All Years</option>
-          {[
-            ...new Set(
-              expenses.map((expense) => new Date(expense.date).getFullYear())
-            ),
-          ].map((year) => (
-            <option key={year} value={year}>
-              {year}
+         
+            <option value="2024">
+              2024
             </option>
-          ))}
+         
         </select>
       </div>
 
