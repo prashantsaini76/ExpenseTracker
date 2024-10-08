@@ -281,6 +281,7 @@ const Dashboard = () => {
   ];
  */
   const categories = [
+    "Groceries",
     "Food",
     "Rent",
     "EMI",
@@ -289,14 +290,15 @@ const Dashboard = () => {
     "Shopping",
     "Fitness",
     "Beauty",
-    "Groceries",
+    "Deposit or Investment",
+    "Subscription",
     "Medical",
     "Home Services",
     "Entertainment",
     "Offering",
     "Fuel",
     "Transfer to a person",
-    "Other",
+    "Other"
   ];
 
   // ... (JSX will follow in the next part)

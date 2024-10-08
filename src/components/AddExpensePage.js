@@ -75,6 +75,7 @@ const AddExpensePage = () => {
   };
 
   const categories = [
+    "Groceries",
     "Food",
     "Rent",
     "EMI",
@@ -83,7 +84,8 @@ const AddExpensePage = () => {
     "Shopping",
     "Fitness",
     "Beauty",
-    "Groceries",
+    "Deposit or Investment",
+    "Subscription",
     "Medical",
     "Home Services",
     "Entertainment",
