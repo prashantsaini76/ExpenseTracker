@@ -11,12 +11,14 @@ import Dashboard from "./components/Dashboard";
 import Register from "./components/Register";
 import AddExpensePage from "./components/AddExpensePage";
 import MonthlyAnalysisPage from "./components/MonthlyAnalysisPage";
+import NavigationBar from "./components/NavigationBar";
 
 function App() {
   return (
     <Router>
       <>
         {/*   <h1>Expense Tracker</h1> */}
+     
         <Routes>
           <Route path="/" element={<Navigate to="/login" replace />} />
           <Route path="/login" element={<Login />} />

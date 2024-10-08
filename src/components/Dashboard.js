@@ -12,6 +12,7 @@ import ExportToPdf from "./ExportToPdf";
 import ExportToExcel from "./ExportToExcel";
 import Spinner from "./Spinner";
 import { BsGraphUpArrow } from "react-icons/bs";
+import NavigationBar from "./NavigationBar";
 
 const Dashboard = () => {
   const [expenses, setExpenses] = useState([]);
@@ -304,35 +305,8 @@ const Dashboard = () => {
   // ... (JSX will follow in the next part)
   return (
     <Card>
-      <div className="flex justify-center gap-4 items-center mb-6 mt-6">
-        <h2 className="text-xl sm:text-2xl font-bold text-white">
-          Dashboard
-        </h2>
-
-        <div className="flex gap-1 items-center">
-          <button
-            onClick={() => navigate("/add-expense")}
-            className="bg-blue-500 text-white px-2 sm:px-2 py-1 rounded-md  hover:bg-blue-600"
-          >
-            <IoAddCircle />
-          </button>
-          <button
-            onClick={() => navigate("/monthly-analysis")}
-            className="bg-green-500 text-white px-2 sm:px-2 py-1 rounded-md hover:bg-green-600"
-          >
-            <BsGraphUpArrow />
-          </button>
-          <ExportToPdf tableData={expenses} />
-          <ExportToExcel tableData={expenses} />
-
-          <button
-            onClick={handleLogout}
-            className="bg-red-500 text-white px-2 sm:px-2 py-1 rounded-md hover:bg-red-600"
-          >
-            <GrPowerShutdown />
-          </button>
-        </div>
-      </div>
+     
+     <NavigationBar expenses={expenses}/>
 
       <div className="mb-4 flex items-center space-x-4 mx-auto">
         <select

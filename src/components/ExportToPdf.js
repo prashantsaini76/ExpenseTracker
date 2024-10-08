@@ -55,10 +55,10 @@ const ExportToPdf = ({ tableData }) => {
   };
 
   return (
-    <div>
-      <button onClick={exportPDF} className="bg-red-700 text-white px-2 sm:px-2 py-1 rounded-md">
-       <GrDocumentPdf/>
-      </button>
+    <div onClick={exportPDF}>
+     
+       <GrDocumentPdf className="bg-red-700 rounded-sm"/>
+     
     </div>
   );
 };

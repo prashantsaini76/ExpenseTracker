@@ -49,10 +49,11 @@ const ExportToExcel = ({ tableData }) => {
   };
 
   return (
-    <div>
-      <button onClick={exportToExcel} className="bg-green-600 text-white px-2 sm:px-2 py-1 rounded-md">
-        <SiMicrosoftexcel/>
-      </button>
+    <div onClick={exportToExcel} className="flex items-center gap-1">
+     
+        <SiMicrosoftexcel className="bg-green-600 rounded-sm"/>
+        <div className="sm:text-[12px] text-[10px]">Export to Excel</div>
+      
     </div>
   );
 };
