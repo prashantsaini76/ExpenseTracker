@@ -4,7 +4,7 @@ function Card({children}) {
   return (
    
 
-        <div className='w-[100vw] bg-[#748d92] rounded-lg overflow-hidden flex flex-col font-sans text-white]'>
+        <div className='w-[100vw] sm:h-[calc(100vh-1rem)] bg-[#748d92] rounded-lg overflow-hidden flex flex-col font-sans text-white]'>
             {children}
         </div>
       
