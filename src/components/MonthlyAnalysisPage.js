@@ -19,6 +19,7 @@ import "jspdf-autotable";
 import html2canvas from "html2canvas";
 import { IoChevronBackCircleSharp } from "react-icons/io5";
 import { GrDocumentPdf } from "react-icons/gr";
+import PieChartComponent from "./PieChartComponent";
 
 const MonthlyAnalysisPage = () => {
   const [expenses, setExpenses] = useState([]);
@@ -207,30 +208,7 @@ const MonthlyAnalysisPage = () => {
               Category-Wise Expenses (Sorted by Amount)
             </h3>
             <div className="overflow-y-auto h-[500px]">
-              <table className="min-w-full bg-white">
-                <thead className="bg-[#05aeee]">
-                  <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                      Category
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                      Amount (₹)
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-200">
-                  {categoryData.map((item) => (
-                    <tr key={item.category}>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-white bg-[#0d1124]">
-                        {item.category}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-white bg-[#0d1124]">
-                        {item.amount.toFixed(2)}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+             <PieChartComponent categoryData={categoryData}/>
             </div>
           </div>
         </div>
