@@ -378,7 +378,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="flex-grow overflow-auto bg-[#181c2c] shadow-xl mx-auto w-[88%] h-[500px] sm:max-h-[600px] rounded-lg mb-10 p-2">
+      <div className="flex-grow overflow-auto bg-[#181c2c] shadow-xl mx-auto w-[88%] h-[800px] sm:max-h-[600px] rounded-lg mb-10 p-2">
         {expenseApiLoading ? (
           <Spinner />
         ) : currentItems.length > 0 ? (
@@ -400,7 +400,7 @@ const Dashboard = () => {
                 </div>
 
                 <div className="flex px-3  py-2 rounded-lg justify-center sm:justify-between items-center gap-2 sm:gap-4 flex-wrap w-[290px] sm:w-[600px] ">
-                  <div className="flex flex-col  items-center justify-center text-center px-4 py-1 rounded-lg flex-wrap w-[100px] sm:w-[180px]">
+                  <div className="flex flex-col  items-center justify-center text-center rounded-lg flex-wrap w-[100px] sm:w-[180px]">
                     <div className="text-[12px] sm:text-[14px] font-bold">{expense.item}</div>
                     <div className="text-[8px] sm:text-[10px]">{expense.category}</div>
                   </div>
@@ -411,7 +411,7 @@ const Dashboard = () => {
                     </div>
                     <div className="text-[8px] sm:text-[10px]">{expense.bankName}</div>
                   </div>
-                  <div className="py-2 border px-6 text-[7px] sm:text-[12px] rounded-lg w-[80px] sm:w-[110px] text-center  bg-[#1c4959] shadow-lg">
+                  <div className="py-2 border mx-auto px-6 text-[10px] sm:text-[12px] rounded-lg w-full sm:w-[110px] text-center  bg-[#1c4959] shadow-lg">
                     ₹ {expense.amount}
                   </div>
                 </div>
