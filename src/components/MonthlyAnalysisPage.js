@@ -134,7 +134,7 @@ const MonthlyAnalysisPage = () => {
   if (error) return <div className="text-red-500">{error}</div>;
 
   return (
-    <div className=" w-[80%] mx-auto mt-8 p-4 mb-8 rounded-lg shadow-lg bg-[#151a30] text-white">
+    <div className=" w-[95%] mx-auto mt-8 p-4 mb-8 rounded-lg shadow-lg bg-[#151a30] text-white">
       <div className="flex flex-col gap-2 justify-center items-center mb-6">
         <button
           onClick={() => navigate("/dashboard")}
