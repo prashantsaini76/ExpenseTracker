@@ -26,7 +26,7 @@ const NavigationBar = ({expenses}) => {
        
 
         {/* Middle Section: Navigation Links */}
-        <div className="flex lg:flex gap-1 lg:space-x-6">
+        <div className="flex lg:flex gap-4 lg:space-x-6">
         <button className="p-1 sm:p-2 rounded-lg shadow-xl bg-[#1c4959]"   onClick={() => navigate("/add-expense")}>
             <div className="flex items-center gap-1">
               <IoAddCircle />
