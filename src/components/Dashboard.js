@@ -378,7 +378,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="flex-grow overflow-auto bg-[#181c2c] shadow-xl mx-auto w-[88%] h-[800px] sm:max-h-[600px] rounded-lg mb-10 p-2">
+      <div className="flex-grow overflow-auto bg-[#181c2c] shadow-xl mx-auto w-[88%] h-[700px] sm:max-h-[600px] rounded-lg mb-10 p-2">
         {expenseApiLoading ? (
           <Spinner />
         ) : currentItems.length > 0 ? (
