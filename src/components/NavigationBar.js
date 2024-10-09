@@ -20,7 +20,7 @@ const NavigationBar = ({expenses}) => {
   };
 
   return (
-    <nav className="bg-[#05aeee] p-4 mt-4 w-[90%] mx-auto mb-4 text-white shadow-lg rounded-lg">
+    <nav className="bg-[#212a31] p-4 mt-4 w-[90%] mx-auto mb-8 text-white shadow-lg rounded-lg">
       <div className="container mx-auto flex justify-between items-center">
         {/* Left Section: Title */}
         <div className="text-white text-lg font-bold">

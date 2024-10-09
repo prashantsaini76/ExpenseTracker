@@ -83,22 +83,21 @@ const Dashboard = () => {
   const filterExpenses = () => {
     let filtered = expenses;
 
-    if(filtered){
-
+    if (filtered) {
       if (filterYear) {
         filtered = filtered.filter((expense) => {
           const expenseDate = new Date(expense.date);
           return expenseDate.getFullYear() === parseInt(filterYear);
         });
       }
-  
+
       if (filterMonth) {
         filtered = filtered?.filter((expense) => {
           const expenseDate = new Date(expense.date);
           return expenseDate.getMonth() + 1 === parseInt(filterMonth);
         });
       }
-  
+
       if (searchTerm) {
         filtered = filtered?.filter((expense) =>
           Object.values(expense).some((value) =>
@@ -106,35 +105,22 @@ const Dashboard = () => {
           )
         );
       }
-  
+
       setFilteredExpenses(filtered);
       calculateTotalAmount(filtered);
       setCurrentPage(1);
-
     }
-   
   };
 
- 
-
-  
-
-    const calculateTotalAmount = (expensesArray) => {
-
-      if (expensesArray){
-
-        const total = expensesArray?.reduce(
-          (sum, expense) => sum + parseFloat(expense.amount),
-          0
-        );
-        setTotalAmount(total.toFixed(2));
-
-      }
-     
-    };
-
-  
- 
+  const calculateTotalAmount = (expensesArray) => {
+    if (expensesArray) {
+      const total = expensesArray?.reduce(
+        (sum, expense) => sum + parseFloat(expense.amount),
+        0
+      );
+      setTotalAmount(total.toFixed(2));
+    }
+  };
 
   // Pagination
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -277,7 +263,7 @@ const Dashboard = () => {
     return today.toISOString().split("T")[0];
   };
 
- /*  const years = [
+  /*  const years = [
     ...new Set(expenses?.map((expense) => new Date(expense.date).getFullYear())),
   ];
  */
@@ -299,20 +285,29 @@ const Dashboard = () => {
     "Offering",
     "Fuel",
     "Transfer to a person",
-    "Other"
+    "Other",
   ];
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = date.toLocaleString("default", { month: "long" });
+    const year = date.getFullYear();
+
+    return `${day}-${month}-${year}`;
+  };
 
   // ... (JSX will follow in the next part)
   return (
     <Card>
-     
-     <NavigationBar expenses={expenses}/>
+      <NavigationBar expenses={expenses} />
 
       <div className="mb-4 flex items-center space-x-4 mx-auto">
         <select
           value={filterMonth}
           onChange={(e) => setFilterMonth(e.target.value)}
-          className="text-[12px] sm:text-[14px] px-4 py-2 border bg-[#181c2c] text-white border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="text-[12px] sm:text-[14px] px-4 py-2 border bg-[#212a31] text-white border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
         >
           <option value="">All Months</option>
           {Array.from({ length: 12 }, (_, i) => i + 1).map((month) => (
@@ -326,18 +321,15 @@ const Dashboard = () => {
         <select
           value={filterYear}
           onChange={(e) => setFilterYear(e.target.value)}
-          className="text-[12px] sm:text-[14px] px-4 py-2 border bg-[#181c2c] text-white border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="text-[12px] sm:text-[14px] px-4 py-2 border bg-[#212a31] text-white border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
         >
           <option value="">All Years</option>
-         
-            <option value="2024">
-              2024
-            </option>
-         
+
+          <option value="2024">2024</option>
         </select>
       </div>
 
-      <div className="mb-4 mx-auto">
+      <div className="mb-4 mx-auto bg-[#212a31] p-2 rounded-lg border">
         <h3 className="text-sm sm:text-lg font-semibold text-white">
           Total Amount: ₹{totalAmount}
         </h3>
@@ -350,7 +342,7 @@ const Dashboard = () => {
             placeholder="Search..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10 text-sm sm:text-lg bg-[#181c2c] text-white pr-4 py-1 sm:py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 w-[130px] sm:w-[200px]"
+            className="pl-10 text-sm sm:text-lg bg-[#212a31] text-white pr-4 py-1 sm:py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 w-[130px] sm:w-[200px]"
           />
           <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
         </div>
@@ -367,7 +359,7 @@ const Dashboard = () => {
           >
             <FaChevronLeft className="size-[10px] sm:size-fit" />
           </button>
-          <span className="text-[12px] sm:text-sm bg-[#181c2c] text-white p-2">
+          <span className="text-[12px] sm:text-sm bg-[#748d92] text-white p-2">
             Results {indexOfFirstItem + 1} to{" "}
             {Math.min(indexOfLastItem, filteredExpenses.length)} of{" "}
             {filteredExpenses.length}
@@ -390,72 +382,57 @@ const Dashboard = () => {
         {expenseApiLoading ? (
           <Spinner />
         ) : currentItems.length > 0 ? (
-          <table className="min-w-full divide-y">
-            <thead>
-              <tr>
-                <th className="px-5 py-3 bg-[#05aeee] text-white text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
-                  Date
-                </th>
-                <th className="px-5 py-3 bg-[#05aeee] text-white text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
-                  Debit Item
-                </th>
-                <th className="px-5 py-3 bg-[#05aeee] text-white text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
-                  Category
-                </th>
-                <th className="px-5 py-3 bg-[#05aeee] text-white text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
-                  Mode
-                </th>
-                <th className="px-5 py-3 bg-[#05aeee] text-white text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
-                  Debit From
-                </th>
-                <th className="px-5 py-3 bg-[#05aeee] text-white text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
-                  Amount (₹)
-                </th>
-                <th className="px-5 py-3 bg-[#05aeee] text-white text-wrap text-left text-[12px] sm:text-sm uppercase font-semibold">
-                  Operation
-                </th>
-              </tr>
-            </thead>
+          <div className="flex flex-col gap-2 flex-wrap">
+            {/* below div should come under looping */}
 
             {currentItems.map((expense) => (
-              <tbody>
-                <tr key={expense._id} className="border-b">
-                  <td className="px-5 py-3 bg-[#181c2c] text-white text-wrap text-left text-[12px] sm:text-sm">
-                    {new Date(expense.date).toLocaleDateString()}
-                  </td>
-                  <td className="px-5 py-3 bg-[#181c2c] text-white text-wrap text-left text-[12px] sm:text-sm">
-                    {expense.item}
-                  </td>
-                  <td className="px-5 py-3 bg-[#181c2c] text-white text-wrap text-left text-[12px] sm:text-sm">
-                    {expense.category}
-                  </td>
-                  <td className="px-5 py-3 bg-[#181c2c] text-white text-wrap text-left text-[12px] sm:text-sm">
-                    {expense.transferMode}
-                  </td>
-                  <td className="px-5 py-3 bg-[#181c2c] text-white text-wrap text-left text-[12px] sm:text-sm">
-                    {expense.bankName}
-                  </td>
-                  <td className="px-5 py-3 bg-[#181c2c] text-white text-wrap text-left text-[12px] sm:text-sm">
-                    {expense.amount}
-                  </td>
-                  <td className="px-5 py-3 flex space-x-2 bg-[#181c2c] text-white">
-                    <button
+              <div className="flex gap-2  justify-between items-center text-white bg-[#212a31] p-2 rounded-lg shadow-lg">
+                <div className="flex flex-col items-center justify-center text-center bg-black py-1 rounded-lg flex-wrap gap-1 w-[70px] sm:w-[100px]">
+                  <div className="text-[12px] sm:text-[20px] font-bold shadow-lg rounded-full px-2 py-1 bg-green-900">
+                    {formatDate(expense.date)?.split("-")[0]}
+                  </div>
+                  <div className="text-[10px]">
+                    {formatDate(expense.date)?.split("-")[1]}
+                  </div>
+                  <div className="text-[10px]">
+                    {formatDate(expense.date)?.split("-")[2]}
+                  </div>
+                </div>
+
+                <div className="flex px-3  py-2 rounded-lg justify-center sm:justify-between items-center gap-2 sm:gap-4 flex-wrap w-[290px] sm:w-[600px] ">
+                  <div className="flex flex-col  items-center justify-center text-center px-4 py-1 rounded-lg flex-wrap w-[100px] sm:w-[180px]">
+                    <div className="text-[12px] sm:text-[14px] font-bold">{expense.item}</div>
+                    <div className="text-[8px] sm:text-[10px]">{expense.category}</div>
+                  </div>
+
+                  <div className="flex flex-col  items-center px-2 sm:px-4 py-1 rounded-lg flex-wrap">
+                    <div className="text-[12px] sm:text-[14px] font-bold">
+                      {expense.transferMode}
+                    </div>
+                    <div className="text-[8px] sm:text-[10px]">{expense.bankName}</div>
+                  </div>
+                  <div className="py-2 px-6 text-[7px] sm:text-[12px] rounded-lg w-[80px] sm:w-[110px] text-center  bg-[#1c4959] shadow-lg">
+                    ₹ {expense.amount}
+                  </div>
+                </div>
+
+                <div className="flex">
+                  <div><button
                       onClick={() => handleDeleteClick(expense._id)}
-                      className="bg-red-500 text-white px-2 sm:px-2 py-1 sm:py-2 rounded-md mr-2 hover:bg-red-600 transition duration-200"
+                      className="bg-red-500 text-white px-1 sm:px-2 py-1 sm:py-2 rounded-md mr-2 hover:bg-red-600 transition duration-200"
                     >
                       <MdDelete />
-                    </button>
-                    <button
+                    </button></div>
+                  <div> <button
                       onClick={() => handleEditClick(expense)}
-                      className="bg-blue-500 text-white px-2 sm:px-2 py-1 sm:py-2 rounded-md mr-2 hover:bg-blue-600 transition duration-200"
+                      className="bg-blue-500 text-white px-1 sm:px-2 py-1 sm:py-2 rounded-md mr-2 hover:bg-blue-600 transition duration-200"
                     >
                       <FaEdit />
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
+                    </button></div>
+                </div>
+              </div>
             ))}
-          </table>
+          </div>
         ) : (
           <div className="w-[200px] shadow-lg bg-gray-200 mx-auto mt-10 p-4 rounded-lg mb-10 text-center">
             No data found
