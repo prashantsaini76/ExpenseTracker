@@ -92,7 +92,9 @@ const AddExpensePage = () => {
     "Offering",
     "Fuel",
     "Transfer to a person",
-    "Other"
+    "Gift",
+    "Vacation",
+    "Other",
   ];
 
   return (

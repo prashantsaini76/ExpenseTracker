@@ -285,6 +285,8 @@ const Dashboard = () => {
     "Offering",
     "Fuel",
     "Transfer to a person",
+    "Gift",
+    "Vacation",
     "Other",
   ];
 
