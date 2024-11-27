@@ -52,7 +52,7 @@ const ExportToExcel = ({ tableData }) => {
     <div onClick={exportToExcel} className="flex items-center gap-1">
      
         <SiMicrosoftexcel className="bg-green-600 rounded-sm"/>
-        <div className="sm:text-[12px] text-[10px]">Export to Excel</div>
+        <div className="sm:text-[12px] text-[10px]">Export</div>
       
     </div>
   );
