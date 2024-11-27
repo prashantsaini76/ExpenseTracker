@@ -30,13 +30,13 @@ const NavigationBar = ({expenses}) => {
         <button className="p-1 sm:p-2 rounded-lg shadow-xl bg-[#1c4959]"   onClick={() => navigate("/add-expense")}>
             <div className="flex items-center gap-1">
               <IoAddCircle />
-              <div className="sm:text-[12px] text-[10px]">Add Expenses</div>
+              <div className="sm:text-[12px] text-[10px]">Add</div>
             </div>
           </button>
           <button className="p-1 sm:p-2 rounded-lg shadow-xl bg-[#1c4959] "  onClick={() => navigate("/monthly-analysis")} >
             <div className="flex items-center gap-1">
               <VscGraph />
-              <div className="sm:text-[12px] text-[10px]">Monthly Analysis</div>
+              <div className="sm:text-[12px] text-[10px]">Analysis</div>
             </div>
           </button>
           <button className="p-1 sm:p-2 rounded-lg shadow-xl bg-[#1c4959]">
@@ -49,7 +49,7 @@ const NavigationBar = ({expenses}) => {
           <button className="p-1 sm:p-2 rounded-lg shadow-xl bg-[#921f1f]" onClick={handleLogout}>
             <div className="flex items-center gap-1">
               <GrPowerShutdown />
-              <div className="sm:text-[12px] text-[10px]">Logout</div>
+              <div className="sm:text-[12px] text-[10px]"></div>
             </div>
           </button>
         </div>
